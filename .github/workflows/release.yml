@@ -1,7 +1,4 @@
-on:
-  release:
-    types:
-      - published
+on: workflow_dispatch
 
 name: release
 
@@ -23,6 +20,10 @@ jobs:
 
     - name: build
       run: python -m build
+
+    - name: test
+      run: |
+        tar -xvvf dist/*.tar.gz
 
     - name: sign
       run: |
